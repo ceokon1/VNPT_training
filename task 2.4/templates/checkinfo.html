@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Player Search Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white shadow-xl rounded-lg p-6">
+        <h1 class="text-2xl font-bold mb-4">🔍 So sánh Stored Procedure An toàn vs. Dynamic SQL</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Form 1: Safe Stored Procedure -->
+            <form method="get" class="flex flex-col items-center space-y-3">
+                <h2 class="font-semibold">🛡 Stored Procedure An Toàn</h2>
+                <input type="text" name="safe_q" placeholder="Nhập tên cầu thủ..."
+                    class="w-full p-2 border border-gray-300 rounded" value="{{ safe_query }}">
+                <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded">Tìm (Safe)</button>
+            </form>
+
+            <!-- Form 2: Unsafe Stored Procedure -->
+            <form method="get" class="flex flex-col items-center space-y-3">
+                <h2 class="font-semibold">⚠️ Dynamic SQL (Unsafe)</h2>
+                <input type="text" name="unsafe_q" placeholder="Nhập tên cầu thủ..."
+                    class="w-full p-2 border border-gray-300 rounded" value="{{ unsafe_query }}">
+                <button type="submit" class="bg-red-600 text-white px-4 py-2 rounded">Tìm (Unsafe)</button>
+            </form>
+        </div>
+
+        {% if safe_players %}
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-2 text-green-600">Kết quả (Safe):</h2>
+            <ul class="space-y-2">
+                {% for p in safe_players %}
+                <li class="border p-4 rounded">
+                    <strong>{{ p[0] }}</strong> - Số áo: {{ p[1] }}<br>
+                    Đội: {{ p[2] }} | Tuổi: {{ p[3] }} | Nhẫn: {{ p[4] }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+
+        {% if unsafe_players %}
+        <div class="mt-6">
+            <h2 class="text-xl font-semibold mb-2 text-red-600">Kết quả (Unsafe):</h2>
+            <ul class="space-y-2">
+                {% for p in unsafe_players %}
+                <li class="border p-4 rounded">
+                    <strong>{{ p[0] }}</strong> - Số áo: {{ p[1] }}<br>
+                    Đội: {{ p[2] }} | Tuổi: {{ p[3] }} | Nhẫn: {{ p[4] }}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
