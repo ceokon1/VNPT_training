@@ -31,7 +31,8 @@ INSERT INTO player (player_name, jersey_number, team_name, age, ring_number) VAL
 ('Kyrie Irving', 11, 'Dallas Mavericks', 32, 1),
 ('Joel Embiid', 21, 'Philadelphia 76ers', 30, 0),
 ('Devin Booker', 1, 'Phoenix Suns', 27, 0),
-('Zion Williamson', 1, 'New Orleans Pelicans', 24, 0);
+('Zion Williamson', 1, 'New Orleans Pelicans', 24, 0),
+('flag', 0, 'dattq{flag}', 0, 0);
 ```
 
 ## Các hàm procedure
