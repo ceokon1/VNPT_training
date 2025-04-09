@@ -41,7 +41,8 @@ INSERT INTO player (player_name, jersey_number, team_name, age, ring_number) VAL
 procedure SearchPlayer @name nvarchar(50)
 as
 begin 
-	select * from player where player_name like	'%' + @name + '%'
+	select * from player where player_name like '%' + @name + '%'
+	and player_name != 'flag'
 end
 ```
 ### Unsafe
@@ -50,7 +51,7 @@ procedure SearchPlayerVul @name nvarchar(50)
 as
 begin 
 	declare @query nvarchar(max)
-	set @query = 'select * from player where player_name like ''%'+@name+'%'' and player_name!='
+	set @query = 'select * from player where player_name like ''%'+@name+'%'' and player_name!=''flag'''
 	exec (@query)
 end
 ```
