@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>XSS Lab Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+</head>
+
+<body class="container py-5">
+    <h2>PDF converter</h2>
+    <form method="POST" action="/generate" target="_blank">
+        <div class="form-group">
+            <label>Họ tên:</label>
+            <input name="name" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label>Nội dung:</label>
+            <textarea name="content" rows="4" class="form-control"></textarea>
+        </div>
+        <button class="btn btn-danger">Tạo</button>
+    </form>
+</body>
+
+</html>
